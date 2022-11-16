@@ -1,0 +1,43 @@
+
+import nodemailer from 'nodemailer';
+// const dotenv = require('dotenv').config();
+
+
+
+
+/**
+ * Account activation
+ */
+ 
+export const accountActivationMail = async (to, data) => {
+ 
+     try {
+        // create a transport
+        const transport = nodemailer.createTransport({
+            host : process.env.MAIL_HOST,
+            port : process.env.MAIL_PORT,
+            auth : {
+                user : process.env.MAIL_ID,
+                pass : process.env.MAIL_PASS
+
+            }
+        });
+ 
+        await transport.sendMail({
+            from :  `Instagram <${process.env.MAIL_ID}>`,
+            to : to ,
+            subject : 'Acount activation mail', 
+            text : 'Please activate your account', 
+            html : `
+                <!DOCTYPE html><html lang="en"><head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Veryfy Acount</title> <style>*{margin: 0px; padding: 0px;}ul{margin: 0px; padding: 0px;}li{list-style: none;}.main-wrap{height: 100vh; width: 100%; background-color: rgb(177, 189, 199); overflow: hidden;}.wraper{background-color: #fff; width: 500px; padding: 30px 30px; margin: 200px auto;}.massege-body{margin: 20px 0px;}.massege-body h2{font-size: 18px;}.massege-body p{font-size: 18px; padding: 12px 0px 12px 0px;}.massege-body a{text-decoration: none; background-color: orangered; color: #fff; padding: 10px 20px; border-radius: 3px; margin-top: 12px; display: inline-block;}.footer span{font-size: 18px;}.footer ul li{display: inline-block; padding-left: 12px; margin-top: 12px;}.footer ul li a{}</style></head><body> <div class="main-wrap"> <div class="wraper"> <div class="header"> <a href=""><img src="https://ci4.googleusercontent.com/proxy/w_M9vu0lAfENq7dpybhGWDCFxvFzYzWenAsa3aO2ZtEhYLRxAc_URJiVipM_kmgebwTXsoMpUPa8MdFs1xT2eOfdXLExqkBUROLnH3xym9P380VQx3sQq8Jh1LNuhQ=s0-d-e1-ft#https://pubs.payoneer.com/EmailSender/Payoneer/img/Default/partner-logo.png" alt=""></a> </div><hr> <div class="massege-body"> <h2>Dear ${data.name}</h2> <p>you recently requested to reset your Payneer password. To select a new password, Click one the button below: </p><a href="${data.link}">Verify Now</a> </div><div class="footer"> <span>Your Acount cell: 01940768078</span> <ul> <li><a hrap="#"><img src="https://ci5.googleusercontent.com/proxy/Hp1tHwpZJplBQHTr-WRQujyXVO54yAQdUwALRHoIu3TW_4YDZ6B6Ls74s-w-3MEDpMW9F5Bc8V4B2IT49EMXsm4X1qqiK8IjzmNO4S_OfAs-tByTjpOe2-uS3s3hY3HTf5w=s0-d-e1-ft#http://pubs.payoneer.com/EmailSender/Payoneer/img/Default/BlocksTemplate/fb.jpg" alt=""></a></li><li><a hrap="#"><img src="https://ci6.googleusercontent.com/proxy/IrEOgUYJAxNOXCfkCzRhp3Pr5plttxi_SK_vo7HZtMFa9MnD5KZqMxD0PxnsIjARnAifRp7OuUYYY20Bx98L__qgfC-G266Bqx7WcwKAYkekf1hLO0pZhaVmV4UfPbaFNGY=s0-d-e1-ft#http://pubs.payoneer.com/EmailSender/Payoneer/img/Default/BlocksTemplate/tw.jpg" alt=""></a></li><li><a hrap="#"><img src="https://ci6.googleusercontent.com/proxy/KSBDtD0zHbN5XeL5qH34sW3-l80xoG-w0BBfwWJAKOpm5TzMSQdySc4IybYGoQHKjT_Wo3UDUSeCtTIWDxoIky3CVQs4NQ208Te17XQNfgN2coi-_NX4ppd5lt40uL9B-LE=s0-d-e1-ft#http://pubs.payoneer.com/EmailSender/Payoneer/img/Default/BlocksTemplate/li.jpg" alt=""></a></li><li><a hrap="#"><img src="https://ci3.googleusercontent.com/proxy/KbRsLtM6Tt_5WQ1KD0uQZbleJrX57shJHjAl-Q-22_EWKFRHSfwaTT01nn6-Us9UGK7tf6Stejz75pXeyloTMQkliiiNCPDM4BFzwy2re5LLocKHIUpXEGk24yWVd8LFeM0=s0-d-e1-ft#http://pubs.payoneer.com/EmailSender/Payoneer/img/Default/BlocksTemplate/dm.jpg" alt=""></a></li></ul> </div></div></div></body></html>
+            `
+        });
+     } catch (error) {
+        console.log(error.message);
+     }
+
+}
+
+
+
+ 
