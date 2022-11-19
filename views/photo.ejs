@@ -1,51 +1,58 @@
-   
-    <div class="profile-body">
+<div class="profile-body">
+  <div class="profile-wraper">
+    <div class="profile-info">
+      <%- include ("./layouts/info.ejs") %>
 
-        <div class="profile-wraper">
-            <div class="profile-info">
-                <%- include ("./layouts/info.ejs") %> 
-
-                <hr>
-                <%- include ("./layouts/menu.ejs") %> 
-                
- 
-            </div>
-            <div class="profile-box"> 
-                <div class="box-content">
-                   <h2>Change Photo</h2>
-
-                   <% if (message) { %>
-                      <p><%= message %> </p>
-                   <% } %>
-                
-                    <hr>
-                    <div class="form-wraper">
-                        <form action="/photo-update" method="POST" enctype="multipart/form-data">
-                            
-                            <div class="form-group">
-                                <label for="">Select a Photo</label>
-                                <div class="profile-photo">
-                                    <% if (user.photo) { %>   
-                                        <img class="profile-preview" src="./media/users/<%= user.photo %>" alt="">
-                                     
-                                    <% } else{ %>
-                                        <img class="profile-preview" src="./images/avatar.png" alt="">
-                                         
-                                    <% }  %>
-                                </div>
-                                <label class="upload">
-                                    <i class="fa fa-photo uplaod"></i>
-                                    <input name="profile" id="profile_photo" style="display:none;" type="file">
-                                </label>
-                            </div>
-
-                            <div class="form-group">
-                                <button>Change</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+      <hr />
+      <%- include ("./layouts/menu.ejs") %>
     </div>
+    <div class="profile-box">
+      <div class="box-content">
+        <h2>Change Photo</h2>
+
+        <% if (message) { %>
+        <p><%= message %></p>
+        <% } %>
+
+        <hr />
+        <div class="form-wraper">
+          <form
+            action="/photo-update"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <div class="form-group">
+              <label for="">Select a Photo</label>
+              <div class="profile-photo">
+                <% if (user.photo) { %>
+                <img
+                  class="profile-preview"
+                  src="./media/users/<%= user.photo %>"
+                  alt=""
+                />
+
+                <% } else{ %>
+                <img class="profile-preview" src="./images/avatar.png" alt="" />
+
+                <% } %>
+              </div>
+              <label class="upload">
+                <i class="fa fa-photo uplaod"></i>
+                <input
+                  name="profile"
+                  id="profile_photo"
+                  style="display: none"
+                  type="file"
+                />
+              </label>
+            </div>
+
+            <div class="form-group">
+              <button>Change</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
