@@ -162,7 +162,7 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  height: 100vh;
+  height: 150vh;
   padding: 100px 0px 0px 0px;
 }
 
@@ -294,24 +294,71 @@ a:hover {
 .flow-info {
   color: #555;
   cursor: pointer;
+}
+.gallary-area {
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 
+.gallary-item {
+  width: 32%;
+  height: 200px;
+  overflow: hidden;
 }
-.gallary-area{
-padding: 20px 0px;
-display: flex;
-justify-content: space-between;
-gap: 10px;
-flex-wrap: wrap;
+.gallary-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-.gallary-item{
-    width: 32%;
-    height: 200px;
-    overflow: hidden;
+/*friends Area*/
+.friends-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 30px 0px;
 }
-.gallary-item img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
+.friends-area .fiiends-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  width: 48%;
+  padding: 10px;
+  border: 1px solid #e9e9e9;
+  overflow: hidden;
 }
+.friends-area .fiiends-item img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.friends-area .fiiends-item .friends-info {
+  display: flex;
+  flex-direction: column;
+}
+.friends-area .fiiends-item .friends-info span:nth-child(1) {
+ font-size: 17px;
+ font-weight: 500;
+}
+.friends-area .fiiends-item .friends-info span:nth-child(2) {
+ font-size: 12px; 
+}
+.friends-area .fiiends-item .friends-info a{
+ font-size: 14px;
+ padding: 2px 5px;
+ text-decoration: none;
+ background: rgb(20, 140, 220);
+ color: rgb(255, 255, 255);
+ width: fit-content;
+ border-radius: 3px;
+ margin-top: 6px;
+}
+.friends-area .fiiends-item .friends-info a.f-unfollow{
+background: gray;
+}
+

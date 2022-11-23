@@ -3,7 +3,7 @@ import express from 'express';
 import multer from 'multer';
 import path, { resolve } from 'path';
 
-import { loginPage, loginUser, profilePage, registerPage, registerUser, logoutUser, useracountActivation, profilePhotoPage, profilePassword, editPage, profilePhotoChange, profileGalleryPage, profileGalleryChange } from '../controllers/userControler.js';
+import { loginPage, loginUser, profilePage, registerPage, registerUser, logoutUser, useracountActivation, profilePhotoPage, profilePassword, editPage, profilePhotoChange, profileGalleryPage, profileGalleryChange, profileGalleryDelete, findFriendsPage, UserProfileData, followUser, unfollowUser } from '../controllers/userControler.js';
 import { authMiddleware } from '../middlewares/authMuddleware.js';
 import { authRedirectMiddleware } from '../middlewares/authRedirectMiddleware.js';
 
@@ -46,7 +46,7 @@ const galleryPhotoUpdate = multer({
     storage
 }).array('gallery', 10);
 
-
+// delete 
 
 
 //Routing
@@ -59,11 +59,15 @@ router.post('/photo-update', profilePhotoUpdate, profilePhotoChange);
 
 // Gallery update
 router.get('/gallery-update', authRedirectMiddleware, profileGalleryPage);
+router.get('/gallery-update', authRedirectMiddleware, profileGalleryDelete);
 router.post('/gallery-update', galleryPhotoUpdate, profileGalleryChange);
+
 
  
 router.get('/password-chenge', authRedirectMiddleware, profilePassword);
 router.get('/profile-chenge', authRedirectMiddleware, editPage);
+router.get('/follow/:id', authRedirectMiddleware, followUser);
+router.get('/unfollow/:id', authRedirectMiddleware, unfollowUser);
 
  
 router.get('/login', authMiddleware, loginPage);
@@ -73,8 +77,13 @@ router.get('/register',  authMiddleware, registerPage);
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.get('/logout', logoutUser);
-router.get('/activate/:token', useracountActivation); 
 
+// photo update
+
+// Find Friends
+router.get('/find-friends', authRedirectMiddleware, findFriendsPage);
+router.get('/activate/:token', useracountActivation); 
+router.get('/:id', authRedirectMiddleware, UserProfileData);
 // export default
 export default router;
 

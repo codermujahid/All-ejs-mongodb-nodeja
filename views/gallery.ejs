@@ -16,11 +16,24 @@
 
         <hr />
         <div class="form-wraper">
+          <h3>Gallery Photo</h3>
+          <div class="gallary-area">
+            <% user.gallery.forEach(gall => { %>
+             <div class="gallary-item">
+              <a class="delet-btn" href="/gallery"><i class="fa fa-times" aria-hidden="true"></i></a>
+              
+              <img src="./media/gallery/<%= gall %> " alt="">
+            </div>
+            <% }) %>
+            
+            
+  
+            
+          </div>
           <form
             action="/gallery-update"
             method="POST"
-            enctype="multipart/form-data"
-          >
+            enctype="multipart/form-data">
             <div class="form-group">
               <label for="">Select Gallery Photo</label>
               <div class="profile-photo gallery"></div>
